@@ -1,9 +1,9 @@
 <?php
 // Connexion à la base de données
-$host = 'localhost';
-$dbname = 'test';
-$username = 'root';
-$password = '';
+$host = getenv("MYSQL_ADDON_HOST");
+$dbname = getenv("MYSQL_ADDON_DB");
+$username = getenv("MYSQL_ADDON_USER");
+$password = getenv("MYSQL_ADDON_PASSWORD");
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
