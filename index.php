@@ -1,5 +1,8 @@
 <?php
-// Connexion à la base de données
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $host = getenv("MYSQL_ADDON_HOST");
 $dbname = getenv("MYSQL_ADDON_DB");
 $username = getenv("MYSQL_ADDON_USER");
@@ -12,7 +15,8 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// Ajout d'un produit
+
+
 if (isset($_POST['add'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
@@ -22,7 +26,8 @@ if (isset($_POST['add'])) {
     exit();
 }
 
-// Suppression d'un produit
+
+
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $stmt = $pdo->prepare("DELETE FROM products WHERE id = ?");
@@ -31,7 +36,8 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Récupération des produits
+
+
 $stmt = $pdo->query("SELECT * FROM products");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
